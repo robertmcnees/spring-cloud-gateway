@@ -1,0 +1,39 @@
+test:
+  hostport: httpbin.org:80
+  #  hostport: localhost:5000
+  #  uri: http://${test.hostport}
+  uri: lb://testservice
+
+server:
+  error:
+    include-message: always
+
+spring:
+  profiles:
+    group:
+      - logging
+  cloud:
+    gateway:
+      routes:
+        # =====================================
+        - id: split_request_test
+          uri: ${test.uri}
+          predicates:
+          - Host=**.splitrequest.org
+          - Path=/foo/{segment}
+          filters:
+          - SplitRequest=/{segment}
+
+# =====================================
+# Ideal?
+#        - id: split_request_final
+#        uri: ${test.uri}
+#        predicates:
+#        - Host=**.splitrequest.org
+#        - Path=/foo/{segment}
+#        - HeaderVal=name=value
+#        filters:
+#        - SplitRequest=/route/{segment}/newService, 5, 30
+#             SplitRequest(secondary route, % real to secondary, % duplicate to secondary)
+#             Something about logging?
+

@@ -1,5 +1,5 @@
 /*
- * Copyright 2013-2019 the original author or authors.
+ * Copyright 2013-2022 the original author or authors.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -98,6 +98,7 @@ public class DisableBuiltInFiltersTests {
 					"spring.cloud.gateway.filter.secure-headers.enabled=false",
 					"spring.cloud.gateway.filter.set-request-header.enabled=false",
 					"spring.cloud.gateway.filter.set-request-host-header.enabled=false",
+					"spring.cloud.gateway.filter.split-request.enabled=false",
 					"spring.cloud.gateway.filter.set-response-header.enabled=false",
 					"spring.cloud.gateway.filter.rewrite-response-header.enabled=false",
 					"spring.cloud.gateway.filter.rewrite-location-response-header.enabled=false",

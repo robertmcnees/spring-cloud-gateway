@@ -1,5 +1,5 @@
 /*
- * Copyright 2013-2020 the original author or authors.
+ * Copyright 2013-2022 the original author or authors.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -91,6 +91,7 @@ import org.springframework.cloud.gateway.filter.factory.SetRequestHeaderGatewayF
 import org.springframework.cloud.gateway.filter.factory.SetRequestHostHeaderGatewayFilterFactory;
 import org.springframework.cloud.gateway.filter.factory.SetResponseHeaderGatewayFilterFactory;
 import org.springframework.cloud.gateway.filter.factory.SetStatusGatewayFilterFactory;
+import org.springframework.cloud.gateway.filter.factory.SplitRequestGatewayFilterFactory;
 import org.springframework.cloud.gateway.filter.factory.StripPrefixGatewayFilterFactory;
 import org.springframework.cloud.gateway.filter.factory.TokenRelayGatewayFilterFactory;
 import org.springframework.cloud.gateway.filter.factory.rewrite.GzipMessageBodyResolver;
@@ -557,6 +558,12 @@ public class GatewayAutoConfiguration {
 	@ConditionalOnEnabledFilter
 	public SetPathGatewayFilterFactory setPathGatewayFilterFactory() {
 		return new SetPathGatewayFilterFactory();
+	}
+
+	@Bean
+	@ConditionalOnEnabledFilter
+	public SplitRequestGatewayFilterFactory setSplitRequestFilterFactory() {
+		return new SplitRequestGatewayFilterFactory();
 	}
 
 	@Bean
